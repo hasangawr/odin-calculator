@@ -17,3 +17,17 @@ const multiply = function(firstNum, secondNum) {
 const divide = function(firstNum, secondNum) {
     return firstNum / secondNum;
 }
+
+
+const operate = function(operator, firstNum, secondNum) {
+    if(operator == '+') {
+        return add(firstNum, secondNum);
+    } else if(operator == '-') {
+        return subtract(firstNum, secondNum);
+    } else if(operator == '*') {
+        return multiply(firstNum, secondNum);
+    } else if(operator == '/') {
+        return divide(firstNum, secondNum);
+    }
+    return 'ERROR!'
+}
