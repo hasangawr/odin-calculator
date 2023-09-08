@@ -1,0 +1,50 @@
+.container {
+    background-color: antiquewhite;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cal-body {
+    max-width: 480px;
+    min-height: 540px;
+    border: 2px solid black;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.display {
+    max-height: 140px;
+    border: 2px solid black;
+    flex: auto;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: xx-large;
+}
+
+.expression-row {
+    flex: auto;
+    padding-top: 15px;
+    padding-left: 10px;
+}
+
+.answer-row {
+    flex: auto;
+    text-align: right;
+    padding-top: 15px;
+    padding-right: 10px;
+}
+
+.keypad {
+    max-height: 360px;
+    border: 2px solid black;
+    flex: auto;
+    margin: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
