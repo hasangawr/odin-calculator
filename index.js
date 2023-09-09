@@ -2,13 +2,16 @@ let firstNum;
 let secondNum;
 let operator;
 
+const keyPad = document.querySelector('.keypad');
+const expressionDisplay = document.querySelector('.expression-row');
+const answerDisplay = document.querySelector('.answer-row')
+
 const buttonGrid = ['AC', 'DEL', '%', '/',
                     '7', '8', '9', '*',
                     '4', '5', '6', '-',
                     '1', '2', '3', '+',
                     '0', '.', '+/-', '='];
 
-const keyPad = document.querySelector('.keypad');
 buttonGrid.forEach(button => {
     let key = document.createElement('button');
     key.id = `key${button}`;
@@ -49,4 +52,12 @@ const operate = function(operator, firstNum, secondNum) {
         return divide(firstNum, secondNum);
     }
     return 'ERROR!'
+}
+
+const display = function(key, displayOn) {
+    if(displayOn == 'exp') {
+        expressionDisplay.textContent = expressionDisplay.textContent + key;
+    } else {
+        answerDisplay.textContent = `Ans:${key}`;
+    }
 }
