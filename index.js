@@ -57,6 +57,11 @@ const calc = function(event) {
         if(!valueDisplayed.includes('.')) display(valueDisplayed + keyPressed);
     } else if(keyPressed == 'DEL') {
         display(valueDisplayed ? valueDisplayed.slice(0, valueDisplayed.length - 1) : valueDisplayed);
+    } else if(keyPressed == 'AC') {
+        display('');
+        firstNum = null;
+        secondNum = null;
+        operator = null;
     }
 }
 
