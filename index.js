@@ -49,11 +49,14 @@ const display = function(key) {
 
 const calc = function(event) {
     let keyPressed = event.target.innerText;
+    let valueDisplayed = calcScreen.textContent;
 
     if(/^[0-9]*$/.test(keyPressed)) {
-        display(calcScreen.textContent + keyPressed);
+        display(valueDisplayed + keyPressed);
     } else if(keyPressed == '.') {
-        if(!calcScreen.textContent.includes('.')) display(calcScreen.textContent + keyPressed);
+        if(!valueDisplayed.includes('.')) display(valueDisplayed + keyPressed);
+    } else if(keyPressed == 'DEL') {
+        display(valueDisplayed ? valueDisplayed.slice(0, valueDisplayed.length - 1) : valueDisplayed);
     }
 }
 
