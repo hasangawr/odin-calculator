@@ -26,19 +26,7 @@
     flex-direction: column;
     font-size: xx-large;
     letter-spacing: 2px;
-}
-
-.expression-row {
-    flex: auto;
-    padding-top: 15px;
-    padding-left: 10px;
-}
-
-.answer-row {
-    flex: auto;
     text-align: right;
-    padding-top: 15px;
-    padding-right: 10px;
 }
 
 .keypad {

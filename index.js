@@ -3,15 +3,13 @@ let secondNum;
 let operator;
 
 const keyPad = document.querySelector('.keypad');
-const expressionDisplay = document.querySelector('.expression-row');
-const answerDisplay = document.querySelector('.answer-row')
+const calcScreen = document.querySelector('.display');
 
 const buttonGrid = ['AC', 'DEL', '%', '/',
                     '7', '8', '9', '*',
                     '4', '5', '6', '-',
                     '1', '2', '3', '+',
                     '0', '.', '+/-', '='];
-
 
 
 
@@ -45,16 +43,12 @@ const operate = function(operator, firstNum, secondNum) {
     return 'ERROR!'
 }
 
-const display = function(key, displayOn) {
-    if(displayOn == 'exp') {
-        expressionDisplay.textContent = expressionDisplay.textContent + key;
-    } else {
-        answerDisplay.textContent = `Ans:${key}`;
-    }
+const display = function(key) {
+    calcScreen.textContent = key;
 }
 
 const calc = function(event) {
-    display(event.target.innerText, 'exp');
+    display(event.target.innerText);
 }
 
 buttonGrid.forEach(button => {
