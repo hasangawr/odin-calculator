@@ -49,3 +49,10 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.key {
+    font-size: large;
+    font-weight: bold;
+    width: 114px;
+    flex: auto;
+}

@@ -12,16 +12,7 @@ const buttonGrid = ['AC', 'DEL', '%', '/',
                     '1', '2', '3', '+',
                     '0', '.', '+/-', '='];
 
-buttonGrid.forEach(button => {
-    let key = document.createElement('button');
-    key.id = `key${button}`;
-    key.textContent = button;
-    key.style.fontSize = 'large';
-    key.style.fontWeight = 'bold';
-    key.style.flex = 'auto';
-    key.style.width = '114px';
-    keyPad.appendChild(key);
-});
+
 
 
 const add = function(firstNum, secondNum) {
@@ -61,3 +52,16 @@ const display = function(key, displayOn) {
         answerDisplay.textContent = `Ans:${key}`;
     }
 }
+
+const calc = function(event) {
+    display(event.target.innerText, 'exp');
+}
+
+buttonGrid.forEach(button => {
+    let key = document.createElement('button');
+    key.classList.add('key');
+    key.id = `key${button}`;
+    key.textContent = button;
+    key.addEventListener('click', calc);
+    keyPad.appendChild(key);
+});
