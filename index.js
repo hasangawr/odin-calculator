@@ -48,7 +48,13 @@ const display = function(key) {
 }
 
 const calc = function(event) {
-    display(event.target.innerText);
+    let keyPressed = event.target.innerText;
+
+    if(/^[0-9]*$/.test(keyPressed)) {
+        display(calcScreen.textContent + keyPressed);
+    } else if(keyPressed == '.') {
+        if(!calcScreen.textContent.includes('.')) display(calcScreen.textContent + keyPressed);
+    }
 }
 
 buttonGrid.forEach(button => {

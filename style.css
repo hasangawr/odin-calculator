@@ -18,13 +18,13 @@
 }
 
 .display {
-    max-height: 140px;
+    max-height: 100px;
     border: 2px solid black;
     flex: auto;
     margin: 0 10px;
     display: flex;
     flex-direction: column;
-    font-size: xx-large;
+    font-size: 100px;
     letter-spacing: 2px;
     text-align: right;
 }
