@@ -1,6 +1,7 @@
-let firstNum;
-let secondNum;
-let operator;
+let firstNum = null;
+let secondNum = null;
+let operator = null;
+let clearDisplay = true;
 
 const keyPad = document.querySelector('.keypad');
 const calcScreen = document.querySelector('.display');
@@ -52,16 +53,57 @@ const calc = function(event) {
     let valueDisplayed = calcScreen.textContent;
 
     if(/^[0-9]*$/.test(keyPressed)) {
-        display(valueDisplayed + keyPressed);
+        if(firstNum !== null && clearDisplay) {
+            display('');
+            clearDisplay = false;
+        }
+        display(calcScreen.textContent + keyPressed);
     } else if(keyPressed == '.') {
         if(!valueDisplayed.includes('.')) display(valueDisplayed + keyPressed);
     } else if(keyPressed == 'DEL') {
         display(valueDisplayed ? valueDisplayed.slice(0, valueDisplayed.length - 1) : valueDisplayed);
+        firstNum = calcScreen.textContent;
     } else if(keyPressed == 'AC') {
         display('');
         firstNum = null;
         secondNum = null;
         operator = null;
+    } else if(keyPressed == '+' || keyPressed == '-' || keyPressed == '*' || keyPressed == '/' || keyPressed == '=') {
+        if (display.textContent !== '') {
+            if (firstNum !== null && operator !== null) {
+                if (secondNum === null) {
+                    if(operator === '=') {
+                        operator = keyPressed;
+                    } else {
+                        secondNum = Number(valueDisplayed);
+                        firstNum = operate(operator, firstNum, secondNum); //
+                        operator = keyPressed;
+                        display(firstNum);
+                        clearDisplay = true;
+                        if(keyPressed == '=') {
+                            secondNum = null;
+                        }
+                    }
+                } else {
+                    secondNum = Number(valueDisplayed);
+                    firstNum = operate(operator, firstNum, secondNum); //
+                    operator = keyPressed;
+                    display(firstNum);
+                    clearDisplay = true;
+                    if(keyPressed == '=') {
+                        secondNum = null;
+                    }
+                }
+            } else {
+                firstNum = Number(valueDisplayed);
+                operator = keyPressed;
+                clearDisplay = true;
+            }
+        }
+    } else if(keyPressed == '%') {
+        //console.log('%');
+    } else if(keyPressed == '+/-') {
+        console.log('+/-');
     }
 }
 
