@@ -2,6 +2,7 @@ let firstNum = null;
 let secondNum = null;
 let operator = null;
 let clearDisplay = true;
+let secondNumEntering = false;
 
 const keyPad = document.querySelector('.keypad');
 const calcScreen = document.querySelector('.display');
@@ -56,6 +57,7 @@ const calc = function(event) {
         if(firstNum !== null && clearDisplay) {
             display('');
             clearDisplay = false;
+            secondNumEntering = true;
         }
         display(calcScreen.textContent + keyPressed);
     } else if(keyPressed == '.') {
@@ -76,6 +78,7 @@ const calc = function(event) {
                         operator = keyPressed;
                     } else {
                         secondNum = Number(valueDisplayed);
+                        secondNumEntering = false;
                         firstNum = operate(operator, firstNum, secondNum); //
                         operator = keyPressed;
                         display(firstNum);
@@ -86,6 +89,7 @@ const calc = function(event) {
                     }
                 } else {
                     secondNum = Number(valueDisplayed);
+                    secondNumEntering = false;
                     firstNum = operate(operator, firstNum, secondNum); //
                     operator = keyPressed;
                     display(firstNum);
@@ -103,7 +107,29 @@ const calc = function(event) {
     } else if(keyPressed == '%') {
         //console.log('%');
     } else if(keyPressed == '+/-') {
-        console.log('+/-');
+        if(valueDisplayed !== '') {
+            if(firstNum === null || secondNum === null) {
+                if(valueDisplayed.charAt(0) == '-') {
+                    display(valueDisplayed.slice(1));
+                } else {
+                    display(`-${valueDisplayed}`);
+                }
+            } else if(firstNum !== null && secondNumEntering === false) {
+                if(valueDisplayed.charAt(0) == '-') {
+                    display(valueDisplayed.slice(1));
+                    firstNum = valueDisplayed.slice(1);
+                } else {
+                    display(`-${valueDisplayed}`);
+                    firstNum = `-${valueDisplayed}`;
+                }
+            } else if(firstNum !== null && secondNumEntering === true) {
+                if(valueDisplayed.charAt(0) == '-') {
+                    display(valueDisplayed.slice(1));
+                } else {
+                    display(`-${valueDisplayed}`);
+                }
+            }
+        }
     }
 }
 
